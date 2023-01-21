@@ -14,7 +14,8 @@
     "clean": "rm -rf out/*",
     "build": "tsc && cp -r ./src/data ./dist/data",
     "rebuild": "npm run clean && npm run build",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "version": "cz bump --changelog"
   },
   "repository": {
     "type": "git",
