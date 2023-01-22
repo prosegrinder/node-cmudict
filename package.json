@@ -12,7 +12,7 @@
   "scripts": {
     "test": "mocha --reporter spec ./tests/test.js",
     "clean": "rm -rf out/*",
-    "build": "tsc && cp -r ./src/data ./dist/data",
+    "build": "tsc && mkdir -p ./dist/data && cp -r ./src/data/* ./dist/data/",
     "rebuild": "npm run clean && npm run build",
     "lint": "eslint .",
     "version": "cz bump --changelog"
