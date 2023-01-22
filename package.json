@@ -6,7 +6,7 @@
   "exports": "./dist/index.js",
   "types": "./types/index.d.ts",
   "files": [
-    "out/**/*",
+    "dist/**/*",
     "types/index.d.ts"
   ],
   "scripts": {
