@@ -1,6 +1,6 @@
 {
   "name": "@prosegrinder/cmudict",
-  "version": "0.1.0",
+  "version": "0.0.0",
   "type": "module",
   "description": "A versioned node wrapper for CMU Pronunciation Dictionary.",
   "exports": "./dist/index.js",
