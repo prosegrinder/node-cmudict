@@ -1,0 +1,37 @@
+name: Publish to NPM
+
+on:
+  push:
+    tags:
+      - "v*"
+
+jobs:
+  lint:
+    uses: prosegrinder/.github/.github/workflows/npm-lint.yaml@main
+
+  test:
+    needs: lint
+    uses: prosegrinder/.github/.github/workflows/npm-test.yaml@main
+
+  publish:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Checkout source code"
+        uses: "actions/checkout@v3"
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.VERSION_BUMP_TAG_TOKEN }}
+      - name: Setup Node.js
+        uses: actions/setup-node@v3.5.1
+        with:
+          node-version: lts/*
+          registry-url: https://registry.npmjs.org/
+      - name: NPM Clean Install
+        run: npm ci
+      - name: NPM Run Build
+        run: npm run build --if-present
+      - uses: JS-DevTools/npm-publish@v1
+        with:
+          access: "public"
+          token: ${{ secrets.NPM_TOKEN }}
