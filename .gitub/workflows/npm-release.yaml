@@ -1,0 +1,13 @@
+name: Bump Version and Create Release
+
+on:
+  push:
+    branches:
+      - $default-branch
+
+jobs:
+  release:
+    if: "!startsWith(github.event.head_commit.message, 'bump:')"
+    # Don't run 'bump:'
+    uses: prosegrinder/.github/.github/workflows/cz-bump-release.yaml@main
+    secrets: inherit
